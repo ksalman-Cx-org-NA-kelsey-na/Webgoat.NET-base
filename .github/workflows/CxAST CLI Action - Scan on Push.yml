@@ -1,0 +1,28 @@
+name: CxAST CLI Action - Scan on Push
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: CxAST CLI Action - Scan on Pull
+        uses: checkmarx/ast-github-action@main #Github Action version
+        with:
+          base_uri: https://eu.ast.checkmarx.net/
+          cx_tenant: cx_gs_enablement
+          cx_client_id: ${{ secrets.CLIENT_ID }}
+          cx_client_secret: ${{ secrets.SECRET }}
+          additional_params: --file-filter !readme --report-format sarif --output-name results
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+      # Path to SARIF file relative to the root of the repository
+         sarif_file: results.sarif
+
+
