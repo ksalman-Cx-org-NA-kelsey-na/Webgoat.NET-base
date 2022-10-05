@@ -39,7 +39,7 @@ jobs:
           github_token: ${{ secrets.GHTOKEN }}
           # optional, default is ${{ github.token }}
           # Additional parameters for AST scan
-          additional_params: --threshold sast-high=200 --file-filter !readme --report-format sarif --output-name CX
+          additional_params: --threshold sast-high=200 --file-filter !readme --report-format sarif --output-name cxResults
           #--sast-filter !src/main/webapp
           #repo_name:
           # optional, default is ${{ github.event.repository.name }}
@@ -53,4 +53,4 @@ jobs:
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: CX.sarif
+          sarif_file: cxResults.sarif
