@@ -31,8 +31,8 @@ jobs:
           github_token: ${{ secrets.GHTOKEN }} # GitHub API Token
           # optional, default is ${{ github.token }}
           # Additional parameters for AST scan
-          additional_params: --threshold sast-high=200 --file-filter !readme --report-format sarif --output-name cxResults
-          #--sast-filter !src/main/webapp
+          additional_params: --threshold sast-high=200 --report-format sarif --output-name cxResults
+          #--sast-filter !src/main/webapp --file-filter !readme
           #repo_name:
           # optional, default is ${{ github.event.repository.name }}
           # Organization name to create the Pr comment
