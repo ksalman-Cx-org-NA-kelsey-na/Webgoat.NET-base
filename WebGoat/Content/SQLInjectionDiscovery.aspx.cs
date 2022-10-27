@@ -25,15 +25,15 @@ namespace OWASP.WebGoat.NET
             try
             {
                 string name = txtID.Text.Substring(0, 3);
-                /* remove for xss fix, comment out line 33-35 for fix
+                remove for xss fix, comment out line 33-35 for fix
                 string encodedoutput = Server.HtmlEncode(output);
 
                 lblOutput.Text = String.IsNullOrEmpty(output) ? "Customer Number does not exist" : encodedoutput;   
-                */
+                /*
                 string output = du.GetEmailByCustomerNumber(name);
 
                 lblOutput.Text = String.IsNullOrEmpty(output) ? "Customer Number does not exist" : output;
-            
+                */
             }
             catch (Exception ex)
             {
