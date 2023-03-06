@@ -31,7 +31,7 @@ jobs:
           github_token: ${{ secrets.GHTOKEN }} # GitHub API Token
           # optional, default is ${{ github.token }}
           # Additional parameters for AST scan
-          additional_params: --scan-types sast, sca, api-security --threshold sast-high=200 --report-format sarif --output-name cxResults --output-path .
+          additional_params: --threshold sast-high=200 --report-format sarif --output-name cxResults --output-path . --scan-types sast, sca, api-security
           #--sast-filter !src/main/webapp --file-filter !readme
           #repo_name:
           # optional, default is ${{ github.event.repository.name }}
