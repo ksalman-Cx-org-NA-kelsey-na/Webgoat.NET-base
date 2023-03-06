@@ -19,8 +19,7 @@ jobs:
       # You may pin to the exact commit or the version.
       # uses: Checkmarx/ast-github-action@e216d56a6535d1921fae7e88d50dd580892ed3ef
       uses: Checkmarx/ast-github-action@2.0.14
-      with:
-        
+      with:  
         base_uri: ${{ secrets.BASE_URI }}
         cx_tenant: ${{ secrets.TENANT }} 
         cx_client_id: ${{ secrets.CLIENT_ID }}
