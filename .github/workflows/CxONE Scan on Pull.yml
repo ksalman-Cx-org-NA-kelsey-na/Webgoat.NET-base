@@ -12,7 +12,7 @@ on:
     - release/*
     
   schedule:
-  - cron: "0 2 * * 1-5"
+  - cron: "0 2 * * 5"
 
   workflow_dispatch:
 
@@ -20,17 +20,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      
       - name: Checkout
         uses: actions/checkout@v2
+      
       - name: Checkmarx AST Github Action
         # You may pin to the exact commit or the version.
         # uses: Checkmarx/ast-github-action@0fcee7e03446692b38464ac6ec3a47bf1deb1c27
-        uses: Checkmarx/ast-github-action@2.0.9
+        uses: Checkmarx/ast-github-action@main
         with:
           base_uri: https://ast.checkmarx.net/
           cx_tenant: ${{ secrets.TENANT }} 
           cx_client_id: ${{ secrets.CLIENT_ID }}
           cx_client_secret: ${{ secrets.CLIENT_SECRET }}
+          additional_params: --threshold sast-high=200 --report-format sarif --output-name cxResults --sast-filter !src/main/webapp --file-filter !readme
+          ##############
           #project_name:
           # optional, default is ${{ github.repository }}
           #branch:
@@ -38,9 +42,6 @@ jobs:
           # GitHub API Token
           github_token: ${{ secrets.GHTOKEN }}
           # optional, default is ${{ github.token }}
-          # Additional parameters for AST scan
-          additional_params: --threshold sast-high=200 --report-format sarif --output-name cxResults
-          #--sast-filter !src/main/webapp --file-filter !readme
           #repo_name:
           # optional, default is ${{ github.event.repository.name }}
           # Organization name to create the Pr comment
