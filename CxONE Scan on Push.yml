@@ -1,11 +1,11 @@
-name: Checkmarx One Scan - Push
+name: Checkmarx One - Scan on Push
 
 # Controls when the workflow will run
 on:
-  pull_request:
+  push:
     types: [opened, reopened, synchronize]
     branches: [ "master" ]
-  
+    
   workflow-dispatch:
 
 permissions:
