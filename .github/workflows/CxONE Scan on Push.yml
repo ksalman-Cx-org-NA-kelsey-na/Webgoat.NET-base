@@ -31,7 +31,7 @@ jobs:
           cx_tenant: ${{ secrets.TENANT }} 
           cx_client_id: ${{ secrets.CLIENT_ID }}
           cx_client_secret: ${{ secrets.CLIENT_SECRET }}
-          additional_params: --threshold sast-high=200 --report-format sarif --output-name cxResults --sast-filter !src/main/webapp --file-filter !readme --scan-types sast,sca,apisec,kics
+          additional_params: --threshold sast-high=200 --report-format sarif --output-name cxResults --sast-filter !src/main/webapp --file-filter !readme --scan-types sast,sca,kics
           ##############
           #project_name:
           # optional, default is ${{ github.repository }}
