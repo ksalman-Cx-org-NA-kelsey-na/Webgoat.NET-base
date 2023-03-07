@@ -4,7 +4,7 @@ name: CxONE - Scan on Pull
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
+  # Triggers the workflow on push or pull request events
   pull_request:
     branches:
     - main
@@ -31,7 +31,7 @@ jobs:
           cx_tenant: ${{ secrets.TENANT }} 
           cx_client_id: ${{ secrets.CLIENT_ID }}
           cx_client_secret: ${{ secrets.CLIENT_SECRET }}
-          additional_params: --threshold sast-high=200 --report-format sarif --output-name cxResults --sast-filter !src/main/webapp --file-filter !readme --scan-types sast,sca,kics
+          additional_params: --threshold sast-high=200 --report-format sarif --output-name cxResults --sast-filter !src/main/webapp --file-filter !readme --scan-types sast,sca,iac-security,api-security
           ##############
           #project_name:
           # optional, default is ${{ github.repository }}
