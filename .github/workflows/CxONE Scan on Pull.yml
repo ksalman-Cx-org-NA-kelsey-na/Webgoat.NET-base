@@ -18,7 +18,7 @@ on:
      inputs:
       logLevel:
         description: 'Log level'
-        required: true
+        required: false
         default: 'warning'
         type: choice
         options:
@@ -27,12 +27,12 @@ on:
         - debug
       print_tags:
         description: 'True to print to STDOUT'
-        required: true
+        required: false
         type: boolean
       environment:
         description: 'Environment to run tests against'
         type: environment
-        required: true
+        required: false
 
 jobs:
   build:
@@ -43,29 +43,24 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Checkmarx AST Github Action
-        uses: Checkmarx/ast-github-action@main
+        uses: Checkmarx/ast-github-action@latest
         with:
           base_uri: https://ast.checkmarx.net/
           cx_tenant: ${{ secrets.TENANT }} 
           cx_client_id: ${{ secrets.CLIENT_ID }}
           cx_client_secret: ${{ secrets.CLIENT_SECRET }}
+          namespace: ${{ github.repository_owner }}
+          github_token: ${{ secrets.GHTOKEN }}
+          pr_number: ${{ github.event.number }}
           additional_params: --threshold sast-high=200 --report-format sarif --output-name cxResults --sast-filter !src/main/webapp --file-filter !readme
+         
           ##############
           #project_name:
           # optional, default is ${{ github.repository }}
           #branch:
           # optional, default is ${{ github.head_ref || github.ref }}
-          # GitHub API Token
-          github_token: ${{ secrets.GHTOKEN }}
-          # optional, default is ${{ github.token }}
           #repo_name:
           # optional, default is ${{ github.event.repository.name }}
-          # Organization name to create the Pr comment
-          #namespace:
-          # optional, default is ${{ github.repository_owner }}
-          # Pr Number of the pull request that needs the decoration
-          #pr_number:
-          # optional, default is ${{ github.event.number }}
       
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
