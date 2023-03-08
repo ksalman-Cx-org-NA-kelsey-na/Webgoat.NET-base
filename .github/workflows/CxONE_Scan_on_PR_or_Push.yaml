@@ -32,6 +32,10 @@ on:
         - info
         - warning
         - debug
+      tags:
+        description: 'Cx Tags'
+        required: false
+        type: string
       print_tags:
         description: 'True to print to STDOUT'
         required: false
@@ -40,14 +44,20 @@ on:
         description: 'Environment to run tests against'
         type: environment
         required: false
-      concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
+permissions: 
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Print the input tag to STDOUT
+        run: echo  The tags are ${{ inputs.tags }} 
         #############
       - name: Checkout
         uses: actions/checkout@v3
