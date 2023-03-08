@@ -14,13 +14,13 @@ checkmarx:
     # scan tags. can be in a key-value format OR "label" format where the value is an empty string.
     tags:
       # example: "priority": "high"
-      # example: "test": ""
+      example: "GH Action": ""
 
     # configure the checkmarx scan configurations for scanning this specific project
     configs:
       # configure the SAST related configurations this specific project
       sast:
         # configure the SAST preset name used for this specific project
-        presetName: 'Checkmarx Default'
+        presetName: 'High and Medium'
          # configure if this specific project will be run incrementally or will it run a full scan 
-        incremental: 'false'
+        incremental: 'true'
