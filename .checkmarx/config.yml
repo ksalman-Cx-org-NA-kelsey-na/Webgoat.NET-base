@@ -14,7 +14,7 @@ checkmarx:
     # scan tags. can be in a key-value format OR "label" format where the value is an empty string.
     tags:
       # example: "priority": "high"
-      example: "GH Action" : ""
+      # example: "GH Action" : ""
 
     # configure the checkmarx scan configurations for scanning this specific project
     configs:
