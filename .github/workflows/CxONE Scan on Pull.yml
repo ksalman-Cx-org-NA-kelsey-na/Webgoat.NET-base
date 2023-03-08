@@ -29,10 +29,6 @@ on:
         description: 'True to print to STDOUT'
         required: true
         type: boolean
-      tags:
-        description: 'CheckmarxONE Scan'
-        required: true
-        type: string
       environment:
         description: 'Environment to run tests against'
         type: environment
