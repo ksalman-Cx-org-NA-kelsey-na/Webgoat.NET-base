@@ -33,7 +33,7 @@ on:
         - warning
         - debug
       tags:
-        description: 'Cx Tags'
+        description: 'Tags'
         required: false
         type: string
       print_tags:
