@@ -1,4 +1,4 @@
-[![CxONE Scan on PR/Push](https://github.com/ksalman-Cx-org-NA-kelsey-na/Webgoat.NET-base/actions/workflows/CxONE_Scan_on_PR_or_Push.yaml/badge.svg)](https://github.com/ksalman-Cx-org-NA-kelsey-na/Webgoat.NET-base/actions/workflows/CxONE_Scan_on_PR_or_Push.yaml)
+[![CxONE Scan on PR/Push](https://github.com/ksalman-Cx-org-NA-kelsey-na/Webgoat.NET-base/actions/workflows/CxONE-Scan-PR-Push.yaml/badge.svg)](https://github.com/ksalman-Cx-org-NA-kelsey-na/Webgoat.NET-base/actions/workflows/CxONE-Scan-PR-Push.yaml)
 
 ***************************** Webgoat.NET **********************************
 * Source Code: https://github.com/jerryhoff/WebGoat.NET
