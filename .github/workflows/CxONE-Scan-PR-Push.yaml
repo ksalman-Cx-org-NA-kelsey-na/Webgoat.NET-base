@@ -45,6 +45,7 @@ on:
         type: environment
         required: false
 
+# This cancels in progress job if another workflow is triggered
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -53,16 +54,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Print the input tag to STDOUT
-        run: echo  The tags are ${{ inputs.tags }} 
-        #############
       - name: Checkout
         uses: actions/checkout@v3
-        #############
       - name: Checkmarx AST Github Action
         uses: Checkmarx/ast-github-action@main
         with:
-          base_uri: https://ast.checkmarx.net/
+          base_uri: ${{ secrets.BASE_URI }}
           cx_tenant: ${{ secrets.TENANT }} 
           cx_client_id: ${{ secrets.CLIENT_ID }}
           cx_client_secret: ${{ secrets.CLIENT_SECRET }}
