@@ -1,17 +1,11 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CxONE Scan on PR/Push
+name: CxONE Scan on PR
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events
   pull_request:
-    branches:
-    - main
-    - master
-    - release/*
-    - dev/*
-  push:
     branches:
     - main
     - master
