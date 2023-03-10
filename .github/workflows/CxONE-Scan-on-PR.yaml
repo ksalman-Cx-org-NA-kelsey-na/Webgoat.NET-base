@@ -8,7 +8,7 @@ on:
     - release/*
     - dev/*
     
-  # schedule:
+  schedule:
     - cron: "0 2 * * 5"
 
   workflow_dispatch:
@@ -69,7 +69,3 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: cxResults.sarif
-      - name: Checkmarx DAST Github Action
-        uses: Checkmarx/dast-github-action@v1.0.0-beta
-          env:
-          CX_APIKEY: ${{ secrets.CX_ONE_API_KEY }}
