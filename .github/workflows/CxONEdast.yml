@@ -25,7 +25,7 @@ jobs:
           # uses: Checkmarx/dast-github-action@ecd5f887dfce870b87915dbf4b48a6339c7506cc
         uses: Checkmarx/dast-github-action@v1.0.1-beta
         env:
-          CX_APIKEY: ${{ secrets.CX_ONE_API_KEY }}
+          CX_APIKEY: ${{ secrets.CX_API_KEY }}
         with:
             # The type of scan to preform (web, api)
             command: web
