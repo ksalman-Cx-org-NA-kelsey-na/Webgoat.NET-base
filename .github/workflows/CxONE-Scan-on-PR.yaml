@@ -9,7 +9,7 @@ on:
     - dev/*
     
   # schedule:
-  # - cron: "0 2 * * 5"
+    - cron: "0 2 * * 5"
 
   workflow_dispatch:
      inputs:
