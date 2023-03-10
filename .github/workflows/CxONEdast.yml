@@ -1,0 +1,56 @@
+name: CxONE Scan Dast
+on:
+  pull_request:
+    branches:
+    - main
+    - master
+    - release/*
+    - dev/*
+    
+  workflow_dispatch:
+     inputs:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Checkmarx DAST Github Action
+          # You may pin to the exact commit or the version.
+          # uses: Checkmarx/dast-github-action@ecd5f887dfce870b87915dbf4b48a6339c7506cc
+        uses: Checkmarx/dast-github-action@v1.0.1-beta
+        with:
+            # The type of scan to preform (web, api)
+            command: 
+            # The path to the ZAP configuration file
+            config: 'gin.yaml'
+            base_url: https://ginandjuice.shop
+            # The environment ID previously created in the Frontend
+            environment_id: gin
+            # The path to the openapi files
+            openapi: # optional
+            # The project ID
+            project_id: # optional
+            # The path to generate the output
+            output: # optional
+            # The zap engine timeout
+            timeout: # optional, default is 10000
+            # The interval in which to update on the progress of the scan
+            update_interval: # optional, default is 10
+            # The jvm properties used in the ZAP engine
+            jvm_properties: # optional, default is -Xmx3G
+            # The log level for the logs
+            log_level: # optional, default is info
+            # Set to true in order to print the logs to the stdout
+            verbose: # optional, default is false
+            # The Severity in which the action should fail
+            fail_on: # optional
+            # Retry requests to AST on connection failure
+            retry: # optional, default is 3
+            # Time between retries in seconds, use with retry
+            retry_delay: # optional, default is 20
