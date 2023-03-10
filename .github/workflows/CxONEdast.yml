@@ -21,18 +21,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Checkmarx DAST Github Action
-          # You may pin to the exact commit or the version.
-          # uses: Checkmarx/dast-github-action@ecd5f887dfce870b87915dbf4b48a6339c7506cc
         uses: Checkmarx/dast-github-action@v1.0.1-beta
         env:
           CX_APIKEY: ${{ secrets.CX_API_KEY }}
         with:
-            # The type of scan to preform (web, api)
             command: web
-            # The path to the ZAP configuration file
             config: './gin_juice.yaml'
-            base_url: ast.checkmarx.net
-            # The environment ID previously created in the Frontend
+            base_url: "deu.checkmarx.net"
             environment_id: 7d57e5e8-69ec-42b9-882b-1f56172742da
             fail_on: ""
             verbose: true
