@@ -1,0 +1,108 @@
+---
+env:
+  contexts:
+    - name: "GinAndJuice"
+      urls:
+        - "https://ginandjuice.shop"
+      includePaths:
+        - "https://ginandjuice.shop.*"
+      excludePaths: []
+      authentication:
+        method: "form"
+        parameters:
+          loginPageUrl: "https://ginandjuice.shop/login"
+          loginRequestUrl: "https://ginandjuice.shop/login"
+          loginRequestBody: "username={%username%}&password={%password%}"
+        verification:
+          method: "poll"
+          loggedInRegex: "Log out"
+          loggedOutRegex: "Log in"
+          pollFrequency: 60
+          pollUnits: "requests"
+          pollUrl: "https://ginandjuice.shop/my-account"
+          pollPostData: ""
+      sessionManagement:
+        method: "cookie"
+        parameters: {}
+      technology:
+        exclude: []
+      users:
+        - name: "carlos"
+          credentials:
+            password: "hunter2"
+            username: "carlos"
+  parameters:
+    failOnError: true
+    failOnWarning: false
+    progressToStdout: true
+  vars: {}
+jobs:
+  - parameters:
+      maxAlertsPerRule: 0
+      scanOnlyInScope: true
+      maxBodySizeInBytesToScan: 0
+      enableTags: false
+    rules: []
+    name: "passiveScan-config"
+    type: "passiveScan-config"
+  - parameters:
+      context: "GinAndJuice"
+      user: "carlos"
+      url: "https://ginandjuice.shop/"
+      maxDuration: 10
+      maxDepth: 0
+      maxChildren: 0
+      acceptCookies: false
+      handleODataParametersVisited: false
+      handleParameters: "IGNORE_COMPLETELY"
+      maxParseSizeBytes: 0
+      parseComments: false
+      parseGit: false
+      parseRobotsTxt: false
+      parseSitemapXml: false
+      parseSVNEntries: false
+      postForm: false
+      processForm: false
+      requestWaitTime: 0
+      sendRefererHeader: false
+      userAgent: ""
+    name: "spider"
+    type: "spider"
+  - parameters:
+      context: "GinAndJuice"
+      user: "carlos"
+      url: "https://ginandjuice.shop/"
+      maxDuration: 60
+      maxCrawlDepth: 10
+      numberOfBrowsers: 16
+      runOnlyIfModern: false
+    name: "spiderAjax"
+    type: "spiderAjax"
+  - parameters: {}
+    name: "passiveScan-wait"
+    type: "passiveScan-wait"
+  - parameters:
+      context: "GinAndJuice"
+      user: "carlos"
+      policy: ""
+      maxRuleDurationInMins: 0
+      maxScanDurationInMins: 0
+      addQueryParam: false
+      delayInMs: 0
+      handleAntiCSRFTokens: false
+      injectPluginIdInHeader: false
+      scanHeadersAllRequests: false
+      threadPerHost: 5
+    policyDefinition:
+      defaultStrength: "medium"
+      defaultThreshold: "medium"
+      rules: []
+    name: "activeScan"
+    type: "activeScan"
+  - parameters:
+      template: "risk-confidence-html"
+      reportDir: "C:\\Users\\joaor"
+      reportTitle: "ZAP Scanning Report"
+      reportDescription: ""
+    name: "report"
+    type: "report"
