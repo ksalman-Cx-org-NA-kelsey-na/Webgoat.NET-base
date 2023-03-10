@@ -30,7 +30,7 @@ jobs:
             # The type of scan to preform (web, api)
             command: web
             # The path to the ZAP configuration file
-            config: 'gin_juice.yaml'
+            config: './gin_juice.yaml'
             base_url: ast.checkmarx.net
             # The environment ID previously created in the Frontend
             environment_id: gin
