@@ -22,7 +22,7 @@ jobs:
       - name: Checkmarx DAST Github Action
         uses: Checkmarx/dast-github-action@v1.0.1-beta
         env:
-          CX_APIKEY: ${{ secrets.CX_API_KEY }}
+          CX_APIKEY: ${{ secrets.CX_DEU_API_KEY }}
         with:
             command: web
             config: './gin_juice.yaml'
