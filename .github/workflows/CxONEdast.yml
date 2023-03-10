@@ -27,7 +27,7 @@ jobs:
         with:
             command: web
             config: './gin_juice.yaml'
-            base_url: "deu.checkmarx.net"
+            base_url: "deu.ast.checkmarx.net"
             environment_id: 7d57e5e8-69ec-42b9-882b-1f56172742da
             fail_on: ""
             verbose: true
