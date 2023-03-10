@@ -25,7 +25,7 @@ jobs:
           CX_APIKEY: ${{ secrets.CX_DEU_API_KEY }}
         with:
             command: web
-            config: './gin_juice.yaml'
+            config: 'gin_juice.yaml'
             base_url: "deu.ast.checkmarx.net"
             environment_id: 7d57e5e8-69ec-42b9-882b-1f56172742da
             fail_on: ""
