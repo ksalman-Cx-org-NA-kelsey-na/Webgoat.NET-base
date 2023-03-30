@@ -29,7 +29,5 @@ jobs:
             config: './gin_juice.yaml'
             environment_id: "7d57e5e8-69ec-42b9-882b-1f56172742da"
             log_level: info
-            base_url: https://deu.ast.checkmarx.net/
-            verbose: true
-            output: ./output
+            base_url: https://deu.ast.checkmarx.net
             
