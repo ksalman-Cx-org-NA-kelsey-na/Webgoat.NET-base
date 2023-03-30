@@ -20,14 +20,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Checkmarx DAST Github Action
-        uses: Checkmarx/dast-github-action@v1.0.1-beta
+        uses: Checkmarx/dast-github-action@v1.0.2
         env:
           CX_APIKEY: ${{ secrets.CX_DEU_API_KEY }}
         with:
-            command: web
-            config: 'gin_juice.yaml'
-            environment_id: 7d57e5e8-69ec-42b9-882b-1f56172742da
+            command: "web"
+            config: './gin_juice.yaml'
+            environment_id: "7d57e5e8-69ec-42b9-882b-1f56172742da"
             log_level: info
             base_url: https://deu.ast.checkmarx.net
             fail_on: "HIGH"
             verbose: true
+            output: ./output
+            
