@@ -1,0 +1,67 @@
+---
+name: CxONE Scan on Push
+on:
+  # Triggers the workflow on push or pull request events
+  push:
+    
+  schedule:
+ #  - cron: "0 2 * * 5"
+
+  workflow_dispatch:
+     inputs:
+      logLevel:
+        description: 'Log level'
+        required: false
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      tags:
+        description: 'Tags'
+        required: false
+        type: string
+      print_tags:
+        description: 'True to print to STDOUT'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: false
+
+# This cancels in progress job if another workflow is triggered
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Checkmarx AST Github Action
+        uses: Checkmarx/ast-github-action@main
+        with:
+          base_uri: ${{ secrets.BASE_URI }}
+          cx_tenant: ${{ secrets.TENANT }} 
+          cx_client_id: ${{ secrets.CLIENT_ID }}
+          cx_client_secret: ${{ secrets.CLIENT_SECRET }}
+          namespace: ${{ github.repository_owner }}
+          github_token: ${{ secrets.GHTOKEN }}
+          pr_number: ${{ github.event.number }}
+          additional_params: --scan-types sast,sca,iac-security,api-security --threshold sast-high=200 --report-format sarif --output-name cxResults --sast-filter !src/main/webapp --file-filter !readme
+          ##############
+          #project_name:
+          # optional, default is ${{ github.repository }}
+          #branch:
+          # optional, default is ${{ github.head_ref || github.ref }}
+          #repo_name:
+          # optional, default is ${{ github.event.repository.name }}
+          #############
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: cxResults.sarif
