@@ -3,10 +3,9 @@ name: CxONE Scan on PR
 on:
   # Triggers the workflow on push or pull request events
   pull_request:
-    branches:
-    - release/*
-    - dev/*
-    - "**"
+    branches-ignore:
+    - main
+    - master
     
   schedule:
     - cron: "0 2 * * 5"
