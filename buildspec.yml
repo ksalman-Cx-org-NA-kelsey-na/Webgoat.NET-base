@@ -4,10 +4,10 @@ version: 0.2
 phases:
   install:
     commands:
-     # - sudo apt-get update
-     # - sudo curl -fsSL https://get.docker.com -o get-docker.sh
-     # - sudo sh get-docker.sh
-     # - Sudo service --status-all
+      - sudo apt-get update
+      - sudo curl -fsSL https://get.docker.com -o get-docker.sh
+      - sudo sh get-docker.sh
+      - Sudo service --status-all
       - sudo service docker start
       - docker pull checkmarx/dast:latest
   build:
