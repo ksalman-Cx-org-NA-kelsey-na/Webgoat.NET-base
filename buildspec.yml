@@ -8,7 +8,6 @@ phases:
       - sudo curl -fsSL https://get.docker.com -o get-docker.sh
       - sudo sh get-docker.sh
       - sudo service --status-all
-      - sudo service docker start
       - docker pull checkmarx/dast:latest
       
   build:
