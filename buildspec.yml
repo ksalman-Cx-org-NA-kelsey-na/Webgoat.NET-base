@@ -19,14 +19,14 @@ phases:
           --config=.*/gin_juice.yaml \
           --base-url=https://deu.ast.checkmarx.net/ \
           --output=/demo/test_output \
-         # --timeout=10000 \
+          --timeout=10000 \
           --update-interval=10 \
           --jvm-properties=-Xmx3G \
-         # --log-level=info \
-         # --verbose \
-         # --retry=3 \
-         # --retry-delay=20 \
-         # --fail-on HIGH
+          --log-level=info \
+          --verbose \
+          --retry=3 \
+          --retry-delay=20 \
+          --fail-on HIGH
             
 artifacts:
   files:
