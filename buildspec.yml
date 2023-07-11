@@ -12,22 +12,19 @@ phases:
       
   build:
     commands:
-      - docker run -e CX_APIKEY=eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI4YjM2NWU0Ny04ZDc0LTQxYTctYTE2MC01M2YzMDEzNWE1YjYifQ.eyJpYXQiOjE2ODkwMzk5ODUsImp0aSI6IjdiODdhYmUyLWNkMWMtNGVhNi05NDI4LWRkMmQzYjIzMTY1YSIsImlzcyI6Imh0dHBzOi8vaWFtLmNoZWNrbWFyeC5uZXQvYXV0aC9yZWFsbXMva2Vsc2V5LW5hIiwiYXVkIjoiaHR0cHM6Ly9pYW0uY2hlY2ttYXJ4Lm5ldC9hdXRoL3JlYWxtcy9rZWxzZXktbmEiLCJzdWIiOiI5OWMyZjJhZS1iZWIwLTQ1NGYtYjI2YS05ZWJmMzI4NTQxODMiLCJ0eXAiOiJPZmZsaW5lIiwiYXpwIjoiYXN0LWFwcCIsInNlc3Npb25fc3RhdGUiOiIwN2FlYzYxNy1jZTRlLTQwZmUtYWE0OC0zNjY3OGIzYjYyOTUiLCJzY29wZSI6IiBvZmZsaW5lX2FjY2VzcyIsInNpZCI6IjA3YWVjNjE3LWNlNGUtNDBmZS1hYTQ4LTM2Njc4YjNiNjI5NSJ9.0uE1sL8Uk2bm6cwDC3JPxlX7yv2iP7aPevg6ZRX3p04 \
-          -v $(pwd):/demo checkmarx/dast:latest \
+      - docker run -e CX_APIKEY=eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhODZiNjEzNC0xZGMwLTRjMjktODIyYi0zZDhhYmRjYzg1NTYifQ.eyJpYXQiOjE2ODgxMzQyODcsImp0aSI6IjQwZTg0NTM5LTRhNjQtNGE4ZC05MTc0LTZmOGYwMzA4NjA0ZiIsImlzcyI6Imh0dHBzOi8vZGV1LmlhbS5jaGVja21hcngubmV0L2F1dGgvcmVhbG1zL2NoZWNrbWFyeC1nbG9iYWwtc2VydmljZXMtaW50ZXJuYWwiLCJhdWQiOiJodHRwczovL2RldS5pYW0uY2hlY2ttYXJ4Lm5ldC9hdXRoL3JlYWxtcy9jaGVja21hcngtZ2xvYmFsLXNlcnZpY2VzLWludGVybmFsIiwic3ViIjoiYzJkZTMxZDctZTUwMS00Njk2LTlhNjAtMWY1YmJiYzAxMTk5IiwidHlwIjoiT2ZmbGluZSIsImF6cCI6ImFzdC1hcHAiLCJzZXNzaW9uX3N0YXRlIjoiNzgyMmUyOTYtZDk3NS00MTQwLTkyOTMtNTYyOWMzZTJkZmRhIiwic2NvcGUiOiIgb2ZmbGluZV9hY2Nlc3MiLCJzaWQiOiI3ODIyZTI5Ni1kOTc1LTQxNDAtOTI5My01NjI5YzNlMmRmZGEifQ.QRfgI6I4SQ-GpKTecdqJofyBgEu5k9VgaSK1uuUmhKQ \
+          -v $(PWD):/demo checkmarx/dast:latest \
           web \
           --environment-id=7d57e5e8-69ec-42b9-882b-1f56172742da \
-          --config=/codebuild/output/src678538097/src/github.com/ksalman-Cx-org-NA-kelsey-na/Webgoat.NET-base/gin_juice.yaml \
+          --config=demo/gin_juice.yaml \
           --base-url=https://deu.ast.checkmarx.net/ \
           --output=/demo/test_output \
-          --timeout=10000 \
-          --update-interval=10 \
           --jvm-properties=-Xmx3G \
-          --log-level=info \
+          --log-level=trace \
           --verbose \
           --retry=3 \
-          --retry-delay=20 \
-          --fail-on HIGH
-            
+          --retry-delay=20 
+           
 artifacts:
   files:
     - '**/*'
