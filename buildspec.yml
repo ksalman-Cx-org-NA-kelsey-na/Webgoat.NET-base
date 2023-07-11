@@ -20,7 +20,7 @@ phases:
           --base-url=https://deu.ast.checkmarx.net/ \
           --output=/demo/test_output \
          # --timeout=10000 \
-         # --update-interval=10 \
+          --update-interval=10 \
           --jvm-properties=-Xmx3G \
          # --log-level=info \
          # --verbose \
