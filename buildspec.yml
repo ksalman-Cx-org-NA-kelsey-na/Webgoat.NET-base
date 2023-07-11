@@ -16,18 +16,18 @@ phases:
           -v $(pwd):/demo checkmarx/dast:latest \
           web \
           --environment-id=7d57e5e8-69ec-42b9-882b-1f56172742da \
-          --config=./gin_juice.yaml \
+          --config=.*/gin_juice.yaml \
           --base-url=https://deu.ast.checkmarx.net/ \
           --output=/demo/test_output \
-          --timeout=10000 \
-          --update-interval=10 \
+         # --timeout=10000 \
+         # --update-interval=10 \
           --jvm-properties=-Xmx3G \
-          --log-level=info \
-          --verbose \
-          --retry=3 \
-          --retry-delay=20 \
-          --fail-on HIGH
-          
+         # --log-level=info \
+         # --verbose \
+         # --retry=3 \
+         # --retry-delay=20 \
+         # --fail-on HIGH
+            
 artifacts:
   files:
     - '**/*'
