@@ -14,18 +14,32 @@ phases:
     commands:
       - docker run /
         -e CX_APIKEY=eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhODZiNjEzNC0xZGMwLTRjMjktODIyYi0zZDhhYmRjYzg1NTYifQ.eyJpYXQiOjE2ODgxMzQyODcsImp0aSI6IjQwZTg0NTM5LTRhNjQtNGE4ZC05MTc0LTZmOGYwMzA4NjA0ZiIsImlzcyI6Imh0dHBzOi8vZGV1LmlhbS5jaGVja21hcngubmV0L2F1dGgvcmVhbG1zL2NoZWNrbWFyeC1nbG9iYWwtc2VydmljZXMtaW50ZXJuYWwiLCJhdWQiOiJodHRwczovL2RldS5pYW0uY2hlY2ttYXJ4Lm5ldC9hdXRoL3JlYWxtcy9jaGVja21hcngtZ2xvYmFsLXNlcnZpY2VzLWludGVybmFsIiwic3ViIjoiYzJkZTMxZDctZTUwMS00Njk2LTlhNjAtMWY1YmJiYzAxMTk5IiwidHlwIjoiT2ZmbGluZSIsImF6cCI6ImFzdC1hcHAiLCJzZXNzaW9uX3N0YXRlIjoiNzgyMmUyOTYtZDk3NS00MTQwLTkyOTMtNTYyOWMzZTJkZmRhIiwic2NvcGUiOiIgb2ZmbGluZV9hY2Nlc3MiLCJzaWQiOiI3ODIyZTI5Ni1kOTc1LTQxNDAtOTI5My01NjI5YzNlMmRmZGEifQ.QRfgI6I4SQ-GpKTecdqJofyBgEu5k9VgaSK1uuUmhKQ /
-        -v /C/dast_home:/dast_home /
+        -v $/dast_home:/dast_home /
         checkmarx/dast:latest /
         web /
         --environment-id=7d57e5e8-69ec-42b9-882b-1f56172742da /
         --config=/dast_home/gin_juice.yaml /
         --base-url=https://deu.ast.checkmarx.net/ /
         --output=/demo/test_output /
-        --jvm-properties=-Xmx3G /
-        --log-level=trace /
-        --verbose /
-        --retry= 3 /
-        --retry-delay=20 
+
+
+
+        docker run -e CX_APIKEY=$API_MASTER_KEY \
+          -v $(pwd):/demo checkmarx/dast:latest \
+          web \
+          --environment-id=7d57e5e8-69ec-42b9-882b-1f56172742da \
+          --config=/demo/zap_config_api.yaml \
+          --base-url=https://urlCxOne.com/ \
+          --output=/demo/test_output \
+          --timeout=10000 \
+          --update-interval=10 \
+          --jvm-properties=-Xmx3G \
+          --log-level=info \
+          --verbose \
+          --retry=3 \
+          --retry-delay=20 \
+          --fail-on HIGH \
+          
 artifacts:
   files:
     - '**/*'
