@@ -18,7 +18,7 @@ phases:
           -v $(pwd):/demo checkmarx/dast:latest \
           web \
           --environment-id=7d57e5e8-69ec-42b9-882b-1f56172742da \
-          --config=demo/gin_juice.yaml \
+          --config='/codebuild/output/src3984867144/src/github.com/ksalman-Cx-org-NA-kelsey-na/Webgoat.NET-base/gin_juice.yaml' \
           --base-url=https://deu.ast.checkmarx.net/ \
           --output=/demo/test_output \
           --jvm-properties=-Xmx3G \
