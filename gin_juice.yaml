@@ -72,8 +72,8 @@ jobs:
       context: "GinAndJuice"
       user: "carlos"
       url: "https://ginandjuice.shop/"
-      maxDuration: 60
-      maxCrawlDepth: 10
+      maxDuration: 10
+      maxCrawlDepth: 3
       numberOfBrowsers: 16
       runOnlyIfModern: false
     name: "spiderAjax"
