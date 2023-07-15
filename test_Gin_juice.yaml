@@ -7,30 +7,6 @@ env:
       includePaths:
         - "https://www.ginnjuice.shop/listing/boobs-are-bullshit?product=46/.*"
       excludePaths: []
-      authentication:
-        method: "form"
-        parameters:
-          loginPageUrl: "https://ginandjuice.shop/login"
-          loginRequestUrl: "https://ginandjuice.shop/login"
-          loginRequestBody: "username={%username%}&password={%password%}"
-        verification:
-          method: "poll"
-          loggedInRegex: "Log out"
-          loggedOutRegex: "Log in"
-          pollFrequency: 60
-          pollUnits: "requests"
-          pollUrl: "https://ginandjuice.shop/my-account"
-          pollPostData: ""
-      sessionManagement:
-        method: "cookie"
-        parameters: {}
-      technology:
-        exclude: []
-      users:
-        - name: "carlos"
-          credentials:
-            password: "hunter2"
-            username: "carlos"
   parameters:
     failOnError: true
     failOnWarning: false
@@ -47,7 +23,7 @@ jobs:
     type: "passiveScan-config"
   - parameters:
       context: "GinAndJuice"
-      user: "carlos"
+      user: ""
       url: "https://ginandjuice.shop/"
       maxDuration: 10
       maxDepth: 0
@@ -70,7 +46,7 @@ jobs:
     type: "spider"
   - parameters:
       context: "GinAndJuice"
-      user: "carlos"
+      user: ""
       url: "https://ginandjuice.shop/"
       maxDuration: 10
       maxCrawlDepth: 3
@@ -83,7 +59,7 @@ jobs:
     type: "passiveScan-wait"
   - parameters:
       context: "GinAndJuice"
-      user: "carlos"
+      user: ""
       policy: ""
       maxRuleDurationInMins: 0
       maxScanDurationInMins: 0
