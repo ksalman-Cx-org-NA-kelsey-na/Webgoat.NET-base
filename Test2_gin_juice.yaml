@@ -1,0 +1,108 @@
+env:
+    contexts:
+        - authentication:
+            method: form
+            parameters:
+                loginPageUrl: https://ginandjuice.shop/login
+                loginRequestBody: username={%username%}&password={%password%}
+                loginRequestUrl: https://ginandjuice.shop/login
+            verification:
+                loggedInRegex: Log out
+                loggedOutRegex: Log in
+                method: poll
+                pollFrequency: 60
+                pollPostData: ""
+                pollUnits: requests
+                pollUrl: https://ginandjuice.shop/my-account
+          excludePaths: []
+          includePaths:
+            - https://ginandjuice.shop.*
+          name: GinAndJuice
+          sessionManagement:
+            method: cookie
+            parameters: {}
+          technology:
+            exclude: []
+          urls:
+            - https://ginandjuice.shop
+          users:
+            - credentials:
+                password: hunter2
+                username: carlos
+              name: carlos
+    parameters:
+        failOnError: true
+        failOnWarning: false
+        progressToStdout: true
+    vars: {}
+jobs:
+    - name: passiveScan-config
+      parameters:
+        enableTags: false
+        maxAlertsPerRule: 0
+        maxBodySizeInBytesToScan: 0
+        scanOnlyInScope: true
+      rules: []
+      type: passiveScan-config
+    - name: spider
+      parameters:
+        acceptCookies: false
+        context: GinAndJuice
+        handleODataParametersVisited: false
+        handleParameters: IGNORE_COMPLETELY
+        maxChildren: 0
+        maxDepth: 1
+        maxDuration: 5
+        maxParseSizeBytes: 0
+        parseComments: false
+        parseGit: false
+        parseRobotsTxt: false
+        parseSVNEntries: false
+        parseSitemapXml: false
+        postForm: false
+        processForm: false
+        requestWaitTime: 0
+        sendRefererHeader: false
+        url: https://ginandjuice.shop/
+        user: carlos
+        userAgent: ""
+      type: spider
+    - name: spiderAjax
+      parameters:
+        context: GinAndJuice
+        maxCrawlDepth: 1
+        maxDuration: 10
+        numberOfBrowsers: 16
+        runOnlyIfModern: false
+        url: https://ginandjuice.shop/
+        user: carlos
+      type: spiderAjax
+    - name: passiveScan-wait
+      parameters: {}
+      type: passiveScan-wait
+    - name: activeScan
+      parameters:
+        addQueryParam: false
+        context: GinAndJuice
+        delayInMs: 0
+        handleAntiCSRFTokens: false
+        injectPluginIdInHeader: false
+        maxRuleDurationInMins: 0
+        maxScanDurationInMins: 0
+        policy: ""
+        scanHeadersAllRequests: false
+        threadPerHost: 5
+        user: carlos
+      policyDefinition:
+        defaultStrength: medium
+        defaultThreshold: medium
+        rules: []
+      type: activeScan
+    - name: report
+      parameters:
+        reportDescription: ""
+        reportDir: /dast_home/test_output/dast-output-1108414615
+        reportFile: ZAP-Report
+        reportTitle: ZAP Scanning Report
+        template: traditional-json-plus
+      type: report
