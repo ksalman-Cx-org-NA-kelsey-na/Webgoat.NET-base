@@ -7,4 +7,4 @@ phases:
       - tar xzvf ./cxcli.tar.gz
   build:
     commands:
-      - ./cx scan create --project-name "$CX_PROJECT_NAME" --file-source "." --branch "main" --report-format 'summaryHTML' --agent 'CodeBuild2' --base-uri "$CX_BASE_URI" --base-auth-uri "$CX_BASE_AUTH_URI" --tenant "$CX_TENANT" --apikey "$CX_API_KEY"
+      - ./cx scan create --project-name "$CX_PROJECT_NAME" --file-source "." --branch "main" --report-format 'summaryHTML' --agent 'CodeBuild2' --base-uri "$CX_BASE_URI" --base-auth-uri "$CX_BASE_AUTH_URI" --tenant "$CX_TENANT" --apikey "$CX_API_KEY" --threshold sast-high=200
