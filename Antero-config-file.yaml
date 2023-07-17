@@ -5,7 +5,7 @@ env:
     urls:
     - "https://ginandjuice.shop"
     includePaths:
-    - "https://ginandjuice.shop/catalog/product?productId=1/*"
+    - "https://ginandjuice.shop/catalog/*"
     excludePaths: []
     sessionManagement:
       method: "cookie"
