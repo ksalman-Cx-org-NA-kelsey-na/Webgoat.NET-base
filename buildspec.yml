@@ -18,7 +18,7 @@ phases:
      #- whoami
      #- cat gin_juice.yaml
      #- chmod 777 gin_juice.yaml
-      - docker run -e CX_APIKEY='eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJhODZiNjEzNC0xZGMwLTRjMjktODIyYi0zZDhhYmRjYzg1NTYifQ.eyJpYXQiOjE2ODkwODk4NjgsImp0aSI6ImQzNTUzNmE1LTc3ODItNDM0Ni1iMDgyLTQxNmRlOTdmM2IyNiIsImlzcyI6Imh0dHBzOi8vZGV1LmlhbS5jaGVja21hcngubmV0L2F1dGgvcmVhbG1zL2NoZWNrbWFyeC1nbG9iYWwtc2VydmljZXMtaW50ZXJuYWwiLCJhdWQiOiJodHRwczovL2RldS5pYW0uY2hlY2ttYXJ4Lm5ldC9hdXRoL3JlYWxtcy9jaGVja21hcngtZ2xvYmFsLXNlcnZpY2VzLWludGVybmFsIiwic3ViIjoiYzJkZTMxZDctZTUwMS00Njk2LTlhNjAtMWY1YmJiYzAxMTk5IiwidHlwIjoiT2ZmbGluZSIsImF6cCI6ImFzdC1hcHAiLCJzZXNzaW9uX3N0YXRlIjoiMzUyMDM3NDktMzVmYy00YWMyLThhZDktYTlhYWFhNmRiMzg3Iiwic2NvcGUiOiIgb2ZmbGluZV9hY2Nlc3MiLCJzaWQiOiIzNTIwMzc0OS0zNWZjLTRhYzItOGFkOS1hOWFhYWE2ZGIzODcifQ.VZAlvidqdRT0jvDFuz8yGeFPPXCBeApswAtvhdKfNzo' -v $(pwd):/dast_home checkmarx/dast:latest web --environment-id='7d57e5e8-69ec-42b9-882b-1f56172742da' --config='/dast_home/gin_juice.yaml' --base-url=https://deu.ast.checkmarx.net/ --output='/dast_home/DAST_results/dast_scan_output' --jvm-properties=-Xmx3G --log-level=trace --verbose --retry=3 --retry-delay=20
+      - docker run -e CX_APIKEY='${{ secrets.CX_DEU_API_KEY }}' -v $(pwd):/dast_home checkmarx/dast:latest web --environment-id='7d57e5e8-69ec-42b9-882b-1f56172742da' --config='/dast_home/gin_juice.yaml' --base-url=https://deu.ast.checkmarx.net/ --output='/dast_home/DAST_results/dast_scan_output' --jvm-properties=-Xmx3G --log-level=trace --verbose --retry=3 --retry-delay=20
            
 artifacts:
   files:
