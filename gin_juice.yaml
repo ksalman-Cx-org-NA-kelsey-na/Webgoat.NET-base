@@ -5,7 +5,7 @@ env:
       urls:
         - "https://ginandjuice.shop"
       includePaths:
-        - "https://www.ginnjuice.shop/listing/boobs-are-bullshit?product=46/*"
+        - "https://https://ginandjuice.shop/*"
       excludePaths: []
       authentication:
         method: "form"
