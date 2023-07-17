@@ -12,9 +12,9 @@ phases:
       
   build:
     commands:
-     #- pwd 
+      - pwd 
      #- uname -a
-     #- ls
+      - ls
      #- whoami
      #- cat gin_juice.yaml
      #- chmod 777 gin_juice.yaml
