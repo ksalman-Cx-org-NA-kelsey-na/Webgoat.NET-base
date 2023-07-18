@@ -5,7 +5,7 @@ env:
       urls:
         - "https://ginandjuice.shop"
       includePaths:
-        - "https://ginandjuice.shop.*"
+        - "https://https://ginandjuice.shop/*"
       excludePaths: []
       authentication:
         method: "form"
@@ -72,8 +72,8 @@ jobs:
       context: "GinAndJuice"
       user: "carlos"
       url: "https://ginandjuice.shop/"
-      maxDuration: 60
-      maxCrawlDepth: 10
+      maxDuration: 10
+      maxCrawlDepth: 3
       numberOfBrowsers: 16
       runOnlyIfModern: false
     name: "spiderAjax"
