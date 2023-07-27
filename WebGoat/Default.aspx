@@ -14,6 +14,10 @@ WebGoat.NET is a purposefully insecure web application - use it to learn and und
 coding practices in .NET.  Each Module on the left side illustrates a common web vulnerability.  WebGoat.NET was 
 designed to be used in live training and/or e-learning environments.
 
+<p>
+Secret=THISIS A SECRET
+</p>
+
 
     <br />
     <br />
