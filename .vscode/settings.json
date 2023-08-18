@@ -1,0 +1,5 @@
+{
+    "CheckmarxAiGuidedRemediation.Gpt Key": "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",
+    "CheckmarxAiGuidedRemediation.model": "gpt-3.5-turbo",
+    "CheckmarxKICS.Additional Parameters": "remediate"
+}
