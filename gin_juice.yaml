@@ -101,7 +101,7 @@ jobs:
     type: "activeScan"
   - parameters:
       template: "risk-confidence-html"
-      reportDir: "C:\\Users\\joaor"
+      reportDir: "/dast_home/test_output"
       reportTitle: "ZAP Scanning Report"
       reportDescription: ""
     name: "report"
