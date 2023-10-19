@@ -1,8 +1,6 @@
----
-name: ZAP Dast scan
-on: [push]
 
-  workflow_dispatch:
+name: ZAP Dast scan
+on: []
 
 jobs:
   zap_scan:
