@@ -1,14 +1,7 @@
----
+
 name: CxONE Scan on PR
 on:
   # Triggers the workflow on push or pull request events
-  pull_request:
-    branches-ignore:
-
-    
-  schedule:
-
-
   workflow_dispatch:
 
 
@@ -21,7 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-latest 
     steps:
-  - name: ZAP Scan
-    uses: zaproxy/action-baseline@v0.9.0
-    with:
-      target: 'Https://www.ast.checkmarx.net'
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.9.0
+        with:
+          target: 'Https://www.ast.checkmarx.net'
