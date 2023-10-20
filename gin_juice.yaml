@@ -43,6 +43,7 @@ jobs:
         maxBodySizeInBytesToScan: 0
         scanOnlyInScope: true
       rules: []
+<<<<<<< HEAD
       type: passiveScan-config
     - name: spider
       parameters:
@@ -106,3 +107,14 @@ jobs:
         reportTitle: ZAP Scanning Report
         template: traditional-json-plus
       type: report
+=======
+    name: "activeScan"
+    type: "activeScan"
+  - parameters:
+      template: "risk-confidence-html"
+      reportDir: "/dast_home/test_output"
+      reportTitle: "ZAP Scanning Report"
+      reportDescription: ""
+    name: "report"
+    type: "report"
+>>>>>>> de875fd58c2129737f8a9b699f5c6bab0bdb7987
