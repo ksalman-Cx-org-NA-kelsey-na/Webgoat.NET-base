@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@main
       - name: Checkmarx AST Github Action
         uses: Checkmarx/ast-github-action@main
         with:
