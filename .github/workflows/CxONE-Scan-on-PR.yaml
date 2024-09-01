@@ -8,7 +8,7 @@ on:
     - master
     
   schedule:
-    - cron: "0 2 * 10 5"
+    #- cron: "0 2 * 10 5"
 
   workflow_dispatch:
      inputs:
@@ -65,8 +65,8 @@ jobs:
           # optional, default is ${{ github.event.repository.name }}
           #############
 
-        
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: cxResults.sarif
+      ######  
+     #- name: Upload SARIF file
+    #   uses: github/codeql-action/upload-sarif@v2
+     #   with:
+      #    sarif_file: cxResults.sarif
