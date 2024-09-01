@@ -55,7 +55,7 @@ jobs:
           namespace: ${{ github.repository_owner }}
           #github_token: ${{ secrets.GHTOKEN }}
           pr_number: ${{ github.event.number }}
-          additional_params: --async --scan-types sast,sca,iac-security,api-security --threshold sast-high=200 --sast-filter !src/main/webapp --file-filter !readme
+          additional_params: --async --threshold sast-high=200 --sast-filter !src/main/webapp --file-filter !readme
           ##############
           #project_name:
           # optional, default is ${{ github.repository }}
