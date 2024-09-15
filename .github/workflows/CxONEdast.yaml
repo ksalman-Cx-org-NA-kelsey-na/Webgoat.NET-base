@@ -1,10 +1,13 @@
-name: CxONE Scan Dast
+name: CxONE Dast Scan 
 on:
   pull_request:
     branches:
     - main
     
-  workflow_dispatch:
+  workflow_dispatch: #adds a 'run now' button
+  
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -12,6 +15,11 @@ concurrency:
 
 jobs:
   build:
+    permissions:
+      contents: read # for actions/checkout to fetch code
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
+      actions: read # only required for a private repository by github/codeql-action/upload-sarif
+     # The type of runner that the job will run on 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,4 +34,17 @@ jobs:
             environment_id: "7d57e5e8-69ec-42b9-882b-1f56172742da"
             log_level: info
             base_url: "https://deu.ast.checkmarx.net"
+            fail_on: ""
+            verbose: true
+            output: ./output
+      - name: Reclaim output directory
+        if: always()
+        run: sudo chown -R 1001:1001 ${{ github.workspace }}/output
+      - uses: actions/upload-artifact@v3
+        if: always()
+        name: Upload Logs
+        with:
+          name: report
+          path: ./output
+          
             
